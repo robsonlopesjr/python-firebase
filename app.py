@@ -74,3 +74,8 @@ for id_venda in dic_requisicao:
         requisicao = requests.get(f'{database_url}/Vendas/{id_venda}.json')
         print(requisicao)
         print(requisicao.json())
+
+# Deletar uma Venda (DELETE)
+requisicao = requests.delete(f'{database_url}/Vendas/-NgyubGhMLMr95RVahXF/.json')
+print(requisicao)
+print(requisicao.text)
