@@ -19,7 +19,7 @@ requisicao = requests.post(
 print(requisicao)
 print(requisicao.text)
 
-# # Criar um produto (POST)
+# Criar um produto (POST)
 dados = {
     'nome': 'teclado',
     'preco': 150,
@@ -28,6 +28,21 @@ dados = {
 
 requisicao = requests.post(
     f'{database_url}/Produtos/.json',
+    data=json.dumps(dados)
+)
+
+print(requisicao)
+print(requisicao.text)
+
+# Editar Venda
+dados = {
+    'cliente': 'Robson',
+    'preco': 149.90,
+    'produto': 'fone de ouvido'
+}
+
+requisicao = requests.patch(
+    f'{database_url}/Vendas/-NgyvetfDRF71Ci_aWV_/.json',
     data=json.dumps(dados)
 )
 
