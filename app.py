@@ -48,3 +48,29 @@ requisicao = requests.patch(
 
 print(requisicao)
 print(requisicao.text)
+
+# Buscar uma venda especifica ou todas as vendas (GET)
+
+# 1) Trazer todos os dados das duas tabelas
+requisicao = requests.get(f'{database_url}/.json')
+print(requisicao)
+dic_requisicao = requisicao.json()
+
+print(dic_requisicao)
+print(dic_requisicao["Produtos"])
+
+# 2) Trazer todos os dados da tabela Vendas
+requisicao = requests.get(f'{database_url}/Vendas/.json')
+print(requisicao)
+dic_requisicao = requisicao.json()
+
+print(dic_requisicao)
+
+# 3) Buscar os dados da venda de um cliente
+for id_venda in dic_requisicao:
+    cliente = dic_requisicao[id_venda]['cliente']
+
+    if cliente == 'Robson':
+        requisicao = requests.get(f'{database_url}/Vendas/{id_venda}.json')
+        print(requisicao)
+        print(requisicao.json())
